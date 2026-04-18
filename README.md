@@ -96,7 +96,7 @@ lost-and-found/
 
 ##  Getting Started
 1. Clone the repo
-   git clone https://github.com/shivanshshri/lost-and-found.git
-2. Open index.html in your browser
-3. Add your Firebase config in js/firebase-config.js
+   git clone https://github.com/priyanshugupta18-web/lost-and-found.git
+3. Open index.html in your browser
+4. Add your Firebase config in js/firebase-config.js
 
