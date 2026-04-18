@@ -1,0 +1,103 @@
+<!-- RECENT LISTINGS -->
+    <section class="listings">
+      <div class="listings-header">
+        <div>
+          <span class="section-tag">Latest activity</span>
+          <h2 class="section-title" style="margin-bottom: 0">
+            Recent Listings
+          </h2>
+        </div>
+        <a href="pages/browse.html" class="view-all">View all →</a>
+      </div>
+      <div class="listings-grid" id="listings-grid">
+        Sample cards (replace with Firestore data)
+        <a href="pages/item-detail.html?id=1" class="item-card">
+          <div class="item-img">📱<span class="item-type lost">Lost</span></div>
+          <div class="item-body">
+            <div class="item-title">Samsung Galaxy S23</div>
+            <div class="item-meta">
+              <span>📍 Mall Road</span>
+              <span>🕐 2 hrs ago</span>
+            </div>
+            <div class="item-desc">
+              Black Samsung phone lost near food court. Has a cracked screen
+              protector.
+            </div>
+          </div>
+        </a>
+        <a href="pages/item-detail.html?id=2" class="item-card">
+          <div class="item-img">
+            🎒<span class="item-type found">Found</span>
+          </div>
+          <div class="item-body">
+            <div class="item-title">Blue Backpack</div>
+            <div class="item-meta">
+              <span>📍 Bus Stand</span>
+              <span>🕐 4 hrs ago</span>
+            </div>
+            <div class="item-desc">
+              Found a blue Wildcraft backpack at bus stand. Contains books and a
+              water bottle.
+            </div>
+          </div>
+        </a>
+        <a href="pages/item-detail.html?id=3" class="item-card">
+          <div class="item-img">🔑<span class="item-type lost">Lost</span></div>
+          <div class="item-body">
+            <div class="item-title">Car Keys (Honda)</div>
+            <div class="item-meta">
+              <span>📍 City Park</span>
+              <span>🕐 6 hrs ago</span>
+            </div>
+            <div class="item-desc">
+              Honda City car keys with a red keychain. Lost somewhere near the
+              jogging track.
+            </div>
+          </div>
+        </a>
+        <a href="pages/item-detail.html?id=4" class="item-card">
+          <div class="item-img">
+            👛<span class="item-type found">Found</span>
+          </div>
+          <div class="item-body">
+            <div class="item-title">Brown Leather Wallet</div>
+            <div class="item-meta">
+              <span>📍 Café Coffee Day</span>
+              <span>🕐 1 day ago</span>
+            </div>
+            <div class="item-desc">
+              Found a brown wallet with some cash and ID cards. Please contact
+              to claim.
+            </div>
+          </div>
+        </a>
+        <a href="pages/item-detail.html?id=5" class="item-card">
+          <div class="item-img">🐕<span class="item-type lost">Lost</span></div>
+          <div class="item-body">
+            <div class="item-title">Lost Dog — Labrador</div>
+            <div class="item-meta">
+              <span>📍 Sector 7</span>
+              <span>🕐 1 day ago</span>
+            </div>
+            <div class="item-desc">
+              Golden Labrador named Bruno, 3 years old. Wearing a blue collar
+              with ID tag.
+            </div>
+          </div>
+        </a>
+        <a href="pages/item-detail.html?id=6" class="item-card">
+          <div class="item-img">💍<span class="item-type lost">Lost</span></div>
+          <div class="item-body">
+            <div class="item-title">Gold Ring</div>
+            <div class="item-meta">
+              <span>📍 Swimming Pool</span>
+              <span>🕐 2 days ago</span>
+            </div>
+            <div class="item-desc">
+              Gold ring with small diamond lost near the changing rooms of
+              community pool.
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
