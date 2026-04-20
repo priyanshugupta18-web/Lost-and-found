@@ -1,0 +1,125 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+  --black: #0e0e0e;
+  --white: #f5f2ec;
+  --accent: #e8521a;
+  --accent2: #f0a500;
+  --gray: #777;
+  --light: #f9f7f2;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --border: rgba(255, 255, 255, 0.3);
+}
+
+body {
+    font-family: "DM Sans", sans-serif;
+    background: linear-gradient(135deg, #fdfcfb, #f0ece3);
+    color: var(--black);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form Card */
+form {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--border);
+    padding: 2.5rem 2rem;
+    border-radius: 1.5rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+form:hover {
+    transform: translateY(-3px);
+}
+
+/* Title */
+#form-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+/* input aur label ko contain karne wala div */
+form div {
+    margin-top: 1.5rem;
+}
+
+/* Labels */
+label {
+    font-size: 0.95rem;
+    color: var(--gray);
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+/* Inputs */
+form input,
+textarea {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
+    border-radius: 0.6rem;
+    border: 1px solid transparent;
+    background-color: white;
+    font-size: 0.95rem;
+    transition: all 0.25s ease;
+}
+
+/* Focus Effect */
+form input:focus,
+textarea:focus {
+    border: 1px solid var(--accent); 
+    box-shadow: 0 0 0 3px rgba(232, 82, 26, 0.15);
+}
+
+/* Textarea */
+textarea {
+    resize: none;
+    min-height: 140px;
+}
+
+/* Button */
+.rpt-btn {
+    width: 100%;
+    margin-top: 2rem;
+    padding: 0.75rem;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    background: linear-gradient(135deg, var(--accent2), var(--accent)); /*ye abhi abhi sikha hai maine button ko ek modern look deta hai*/
+    transition: all 0.3s ease;
+}
+
+/* Button Hover */
+.rpt-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(240, 165, 0, 0.4);
+}
+
+/* Button Click */
+.rpt-btn:active {
+    transform: scale(0.97);
+}
