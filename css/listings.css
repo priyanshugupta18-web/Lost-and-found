@@ -1,0 +1,80 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    background: linear-gradient(135deg, #fdfcfb, #f0ece3);
+    margin: 0;
+}
+
+/* Container */
+.container {
+    padding: 2rem;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Title */
+.title {
+    text-align: center;
+    color: #e8521a;
+    margin-bottom: 2rem;
+}
+
+/* Grid layout */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Card */
+.card {
+    background: white;
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* Image */
+.card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 0.8rem;
+}
+
+/* Content */
+.card h3 {
+    margin: 0.5rem 0;
+}
+
+.card p {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+/* Badge */
+.badge {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+/* Lost */
+.lost {
+    background: #ffe5e0;
+    color: #e8521a;
+}
+
+/* Found */
+.found {
+    background: #e0ffe5;
+    color: #1a8f3c;
+}
+
