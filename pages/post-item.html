@@ -14,7 +14,7 @@
 <body>
     <div class="container">
         <form action="">
-            <h2 id="form-title">Report Lost Item</h2>
+            <h2 id="form-title">Report Item</h2>
             <div>
                 <label for="item-name">Enter name of the item:</label>
                 <input type="text" name="item-name" placeholder="Item name here">
@@ -23,7 +23,17 @@
                 <label for="Description">Description:</label>
                 <textarea name="Description" id="Description" placeholder="write something..."></textarea>
             </div>
-
+             <div>
+                <label for="image">Upload Image:</label>
+                <input type="file" id="image" accept="image/*">
+            </div>
+            <div>
+                <label for="type">Type:</label>
+                <select name="type">
+                    <option value="lost">Lost</option>
+                    <option value="found">Found</option>
+                </select>
+            </div>
             <button class="rpt-btn">Report</button>
         </form>
     </div>

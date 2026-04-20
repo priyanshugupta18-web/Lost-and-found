@@ -123,3 +123,37 @@ textarea {
 .rpt-btn:active {
     transform: scale(0.97);
 }
+
+select {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
+    border-radius: 0.6rem;
+    border: 1px solid transparent;
+    background-color: white;
+    font-size: 0.95rem;
+    font-family: "DM Sans", sans-serif;
+    cursor: pointer;
+    
+}
+
+/* Focus effect (same as input) */
+select:focus {
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 0 3px rgba(232, 82, 26, 0.15);
+}
+
+/* Hover */
+select:hover {
+    border: 1px solid var(--accent2);
+}
+
+input[type="file"]::file-selector-button {
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 10px;
+    /* transition: 0.3s; */
+}
+
