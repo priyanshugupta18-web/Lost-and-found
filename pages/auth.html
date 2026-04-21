@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/auth.css">
+    <title>login/signup</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2>login / signup</h2>
+        <div class="inputs">
+            <input type="email" placeholder="Enter your email" id="email">
+            <input type="password" placeholder="Enter your password" id="password">
+        </div>
+        <div class="btn">
+            <button id="login">login</button>
+            <button id="signup">signup</button>
+        </div>
+
+        <div class="divider"><span>OR</span></div>
+
+        <button id="googleBtn" class="google-btn">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google icon">
+            Continue with Google
+        </button>
+    </div>
+    <script type="module" src="../auth/auth.js"></script>
+</body>
+
+</html>

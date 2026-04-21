@@ -1,0 +1,126 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: #0e0e0e;
+    --white: #f5f2ec;
+    --accent: #e8521a;
+    --accent2: #f0a500;
+    --gray: #777;
+    --light: #f9f7f2;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --border-soft: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--white);
+    font-family: sans-serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    background-color: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(10px); 
+}
+
+.container h2 {
+    text-align: center;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+
+.container input {
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 12px;
+    border: 1px solid transparent;
+    outline: none;
+    border-radius: 10px;
+    background-color: rgb(241, 240, 240);
+    transition: all 0.3s ease;
+}
+
+.container input:focus {
+    border: 1px solid var(--accent);
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(232, 82, 26, 0.2);
+}
+
+.btn {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.container button {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    border: none;
+    outline: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+#login, #signup {
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    color: white;
+}
+
+.container button:hover {
+    opacity: 0.9;
+}
+
+/* --- Google Auth Button Styling --- */
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background-color: #ffffff !important;
+    color: #444;
+    border: 1px solid #ddd !important;
+    margin-top: 10px;
+}
+
+.google-btn img {
+    width: 18px;
+    height: 18px;
+}
+
+/* --- OR Divider Styling --- */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+    color: var(--gray);
+    font-size: 0.8rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+}
+
+.divider span {
+    padding: 0 10px;
+    font-weight: bold;
+}

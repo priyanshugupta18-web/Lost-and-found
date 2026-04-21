@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --accent: #e8521a;
+    --accent2: #f0a500;
+    --white: #f5f2ec;
+    --black: #0e0e0e;
+    --gray: #777;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: var(--white);
+}
+
+/* NAVBAR */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 6%;
+    background: white;
+    border-bottom: 1px solid #eee;
+}
+
+.brand {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+/* PROFILE */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+/* DROPDOWN */
+.profile-dropdown {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    display: none;
+}
+
+.profile-dropdown.show {
+    display: block;
+}
+
+.profile-dropdown button {
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: red;
+}
+
+/* CONTENT */
+.dash-content {
+    padding: 3rem 6%;
+}
+
+.welcome-banner h1 {
+    font-size: 2.5rem;
+}
+
+.welcome-banner p {
+    color: var(--gray);
+    margin-top: 5px;
+}
+
+/* ACTIONS */
+.main-actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.action-row {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action-row:hover {
+    transform: translateX(8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.action-icon {
+    font-size: 1.5rem;
+}
+
+.highlight {
+    border-left: 5px solid var(--accent);
+}
