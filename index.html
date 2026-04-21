@@ -8,16 +8,19 @@
       href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
     <!-- NAVBAR -->
     <nav>
-      <a href="index.html" class="logo">Find<span>It</span></a>
+      <a href="index.html" class="logo">Lost & <span>Found</span></a>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="pages/browse.html">Browse</a></li>
-        <li><a href="pages/post-item.html">Post Item</a></li>
+        <li><a href="#how">How it Works</a></li>
+        <li><a href="#getStarted">Get Started</a></li>
+
+        <!-- <li><a href="pages/post-item.html">Post Item</a></li> -->
+
         <li><a href="pages/about.html">About</a></li>
       </ul>
       <div class="nav-btns" id="nav-guest">
@@ -33,169 +36,61 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-content">
-        <span class="hero-tag">Lost something? We can help.</span>
-        <h1>Where Lost things<br />find their <em>way back</em></h1>
+        <span class="hero-tag">Simple Lost & Found for campus</span>
+        <h1>Lost something?<br />Find it faster.</h1>
         <p>
-          Post lost or found items, browse listings, and connect with people in
-          your community to recover what matters most.
+          FindIt helps students post lost or found items, browse recent posts,
+          and contact each other safely.
         </p>
         <div class="hero-btns">
           <a href="pages/post-item.html?type=lost" class="hero-btn-lost"
-            >🔍 I Lost Something</a
+            >I Lost Something</a
           >
           <a href="pages/post-item.html?type=found" class="hero-btn-found"
-            >📦 I Found Something</a
+            >I Found Something</a
           >
         </div>
-        <div class="hero-search">
-          <input
-            type="text"
-            placeholder="Search for a lost item..."
-            id="search-input"
-          />
-          <button onclick="searchItems()">Search</button>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <div class="hero-card">
-          <div class="card-icon lost">🔑</div>
-          <div class="card-info">
-            <h4>Car Keys</h4>
-            <p>Near Central Park · 2 hrs ago</p>
-          </div>
-          <span class="card-badge lost">Lost</span>
-        </div>
-        <div class="hero-card">
-          <div class="card-icon found">👜</div>
-          <div class="card-info">
-            <h4>Black Handbag</h4>
-            <p>Bus Stop #14 · 5 hrs ago</p>
-          </div>
-          <span class="card-badge found">Found</span>
-        </div>
-        <div class="hero-card">
-          <div class="card-icon match">✅</div>
-          <div class="card-info">
-            <h4>iPhone 14 — Matched!</h4>
-            <p>Returned to owner today</p>
-          </div>
-          <span class="card-badge match">Reunited</span>
-        </div>
       </div>
     </section>
 
-    <!-- STATS -->
-    <section class="stats">
-      <div>
-        <div class="stat-num">2,400+</div>
-        <div class="stat-label">Items Posted</div>
-      </div>
-      <div>
-        <div class="stat-num">1,800+</div>
-        <div class="stat-label">Items Reunited</div>
-      </div>
-      <div>
-        <div class="stat-num">5,000+</div>
-        <div class="stat-label">Registered Users</div>
-      </div>
-      <div>
-        <div class="stat-num">98%</div>
-        <div class="stat-label">Satisfaction Rate</div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS -->
-    <section class="how">
+    <!-- QUICK WORKFLOW -->
+    <section class="how" id="how">
       <span class="section-tag">How it works</span>
-      <h2 class="section-title">Simple. Fast. Effective.</h2>
-      <p class="section-sub">
-        Three easy steps to post your item and connect with the right person.
-      </p>
+      <h2 class="section-title">3 quick steps</h2>
+      <p class="section-sub">Keep it simple: post, search, and connect.</p>
       <div class="steps">
         <div class="step">
           <div class="step-num">1</div>
-          <h3>Post Your Item</h3>
-          <p>
-            Fill in the details — title, photo, category, location, and date
-            lost or found.
-          </p>
+          <h3>Post</h3>
+          <p>Add a short title, photo, and place where item was lost/found.</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <h3>Browse Listings</h3>
-          <p>
-            Search and filter through active lost & found listings in your area.
-          </p>
+          <h3>Search</h3>
+          <p>Check browse page to match your item with existing listings.</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <h3>Connect & Recover</h3>
-          <p>
-            Message the poster directly and arrange a safe return of the item.
-          </p>
+          <h3>Get it back</h3>
+          <p>Message the poster and plan a safe meetup on campus.</p>
         </div>
       </div>
     </section>
 
-    <!-- CATEGORIES -->
-    <section class="categories">
-      <div class="categories-header">
-        <span class="section-tag">Browse by category</span>
-        <h2 class="section-title">What are you looking for?</h2>
-      </div>
-      <div class="cats-grid">
-        <a href="pages/browse.html?cat=electronics" class="cat-item">
-          <span class="cat-emoji">📱</span>
-          <span class="cat-name">Electronics</span>
-        </a>
-        <a href="pages/browse.html?cat=keys" class="cat-item">
-          <span class="cat-emoji">🔑</span>
-          <span class="cat-name">Keys</span>
-        </a>
-        <a href="pages/browse.html?cat=bags" class="cat-item">
-          <span class="cat-emoji">👜</span>
-          <span class="cat-name">Bags</span>
-        </a>
-        <a href="pages/browse.html?cat=wallet" class="cat-item">
-          <span class="cat-emoji">👛</span>
-          <span class="cat-name">Wallet</span>
-        </a>
-        <a href="pages/browse.html?cat=pets" class="cat-item">
-          <span class="cat-emoji">🐾</span>
-          <span class="cat-name">Pets</span>
-        </a>
-        <a href="pages/browse.html?cat=documents" class="cat-item">
-          <span class="cat-emoji">📄</span>
-          <span class="cat-name">Documents</span>
-        </a>
-        <a href="pages/browse.html?cat=jewelry" class="cat-item">
-          <span class="cat-emoji">💍</span>
-          <span class="cat-name">Jewelry</span>
-        </a>
-        <a href="pages/browse.html?cat=other" class="cat-item">
-          <span class="cat-emoji">📦</span>
-          <span class="cat-name">Other</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <div class="cta">
+    <!-- GET STARTED -->
+    <div class="cta" id="getStarted">
       <div>
-        <h2>Found something that belongs to someone?</h2>
-        <p>Help reunite it with its owner — it only takes 2 minutes to post.</p>
+        <h2>Get started in under 2 minutes</h2>
+        <p>Choose what happened and create your first post now.</p>
       </div>
-      <a href="pages/post-item.html?type=found" class="cta-btn"
-        >Post Found Item →</a
-      >
+      <a href="pages/post-item.html" class="cta-btn">Get Started →</a>
     </div>
 
     <!-- FOOTER -->
     <footer>
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="logo">Find<span>It</span></a>
+          <a href="index.html" class="logo">Lost & <span>Found</span></a>
           <p>
             A community platform to help people recover lost belongings and
             return found items to their rightful owners.
@@ -207,22 +102,12 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="pages/browse.html">Browse</a></li>
             <li><a href="pages/post-item.html">Post Item</a></li>
-            <li><a href="pages/about.html">About Us</a></li>
-            <li><a href="pages/contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Account</h4>
-          <ul>
-            <li><a href="auth/login.html">Login</a></li>
-            <li><a href="auth/signup.html">Sign Up</a></li>
-            <li><a href="dashboard/index.html">Dashboard</a></li>
-            <li><a href="pages/faq.html">FAQ</a></li>
+            <li><a href="pages/about.html">About</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2026 FindIt. All rights reserved.</p>
+        <p>© 2026 Lost & Found. All rights reserved.</p>
       </div>
     </footer>
 
@@ -248,19 +133,6 @@
           window.location.reload();
         });
       });
-
-      // Search
-      function searchItems() {
-        const q = document.getElementById("search-input").value.trim();
-        if (q)
-          window.location.href = `pages/browse.html?search=${encodeURIComponent(q)}`;
-      }
-
-      document
-        .getElementById("search-input")
-        .addEventListener("keydown", (e) => {
-          if (e.key === "Enter") searchItems();
-        });
     </script>
   </body>
 </html>
