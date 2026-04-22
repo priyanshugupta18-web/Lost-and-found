@@ -1,5 +1,8 @@
 import { db } from "./firebase.js";
-import { addDoc, collection } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+import {
+  addDoc,
+  collection,
+} from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 
 const form = document.querySelector("form");
 
@@ -11,6 +14,7 @@ form.addEventListener("submit", async (e) => {
   const description = form["Description"].value;
   const type = form["type"].value;
   const file = document.getElementById("image").files[0];
+  const phone = form["phone-number"].value;
 
   let imageUrl = "";
 
@@ -25,8 +29,8 @@ form.addEventListener("submit", async (e) => {
         "https://api.cloudinary.com/v1_1/dxvkbjxnf/image/upload",
         {
           method: "POST",
-          body: formData
-        }
+          body: formData,
+        },
       );
 
       const data = await res.json();
@@ -39,13 +43,15 @@ form.addEventListener("submit", async (e) => {
       description: description,
       type: type,
       image: imageUrl,
-      createdAt: new Date()
+      phone: phone,
+      createdAt: new Date(),
     });
 
     alert("Item reported successfully!");
     form.reset();
-
-  } catch (error) {
+    document.location.href = "../pages/dashboard.html";
+  } 
+  catch (error) {
     console.error(error);
     alert("Error occurred!");
   }

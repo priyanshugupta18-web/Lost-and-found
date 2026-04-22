@@ -17,15 +17,19 @@
             <h2 id="form-title">Report Item</h2>
             <div>
                 <label for="item-name">Enter name of the item:</label>
-                <input type="text" name="item-name" placeholder="Item name here">
+                <input type="text" name="item-name" placeholder="Item name here" required>
             </div>
             <div>
                 <label for="Description">Description:</label>
-                <textarea name="Description" id="Description" placeholder="write something..."></textarea>
+                <textarea name="Description" id="Description" placeholder="write something..." required></textarea>
             </div>
             <div>
                 <label for="image">Upload Image:</label>
                 <input type="file" id="image" accept="image/*">
+            </div>
+            <div>
+                <label for="phone-number">Enter your mobile number:</label>
+                <input type="tel" id="phone" name="phone-number" required>
             </div>
             <div>
                 <label for="type">Type:</label>

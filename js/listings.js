@@ -21,6 +21,7 @@ snapshot.forEach((doc) => {
 
     <h3>${data.name}</h3>
     <p>${data.description}</p>
+    <p>Contact at: ${data.phone}</p>
 
     <span class="badge ${data.type}">
       ${data.type.toUpperCase()}
