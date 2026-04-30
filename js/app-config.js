@@ -7,11 +7,6 @@ const defaultConfig = {
     messagingSenderId: "1074691050985",
     appId: "1:1074691050985:web:77b4253878d643e78fcf78",
   },
-  algolia: {
-    appId: "E8CKULBYXW",
-    searchKey: "070aef38b35761aa7a43f414998223ea",
-    index: "items",
-  },
 };
 
 function mergeConfig(base, overrides) {
@@ -20,7 +15,6 @@ function mergeConfig(base, overrides) {
     ...base,
     ...overrides,
     firebase: { ...base.firebase, ...(overrides.firebase || {}) },
-    algolia: { ...base.algolia, ...(overrides.algolia || {}) },
   };
 }
 
