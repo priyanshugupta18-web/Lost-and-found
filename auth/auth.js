@@ -18,6 +18,12 @@ window.addEventListener("DOMContentLoaded", () => {
   const googleBtn = document.getElementById("googleBtn");
   const DASHBOARD_URL = "../pages/dashboard.html";
 
+  if (!email || !password || !loginBtn || !signupBtn || !googleBtn) {
+    console.error("Auth page elements missing. Check IDs in auth.html.");
+    alert("Auth page is not initialized correctly. Please refresh.");
+    return;
+  }
+
   function redirectToDashboard() {
     window.location.href = DASHBOARD_URL;
   }
@@ -49,7 +55,8 @@ window.addEventListener("DOMContentLoaded", () => {
       alert(getFriendlyAuthError(err));
     });
 
-  signupBtn.addEventListener("click", async () => {
+  signupBtn.addEventListener("click", async (event) => {
+    event.preventDefault();
     if (!email.value || !password.value) {
       alert("Please fill all fields");
       return;
@@ -64,7 +71,8 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  loginBtn.addEventListener("click", async () => {
+  loginBtn.addEventListener("click", async (event) => {
+    event.preventDefault();
     if (!email.value || !password.value) {
       alert("Please fill all fields");
       return;
@@ -82,7 +90,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const provider = new GoogleAuthProvider();
   provider.setCustomParameters({ prompt: "select_account" });
 
-  googleBtn.addEventListener("click", async () => {
+  googleBtn.addEventListener("click", async (event) => {
+    event.preventDefault();
     googleBtn.disabled = true;
     try {
       await signInWithPopup(auth, provider);
