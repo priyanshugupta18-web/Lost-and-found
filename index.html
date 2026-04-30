@@ -48,45 +48,67 @@
         latest reports, and reconnect with the right person quickly.
       </p>
       <div class="hero-btns">
-        <a href="pages/auth.html" class="hero-btn-lost">Report lost item</a>
-        <a href="pages/auth.html" class="hero-btn-found">Post found item</a>
+        <a href="pages/post-item.html?type=lost" class="hero-btn-lost">Report lost item</a>
+        <a href="pages/post-item.html?type=found" class="hero-btn-found">Post found item</a>
       </div>
     </div>
 
-    <div class="hero-visual" aria-label="FindIt listing preview">
+    <div class="hero-visual" aria-label="FindIt feature preview">
       <div class="preview-panel">
         <div class="preview-top">
           <img src="assets/favicon.svg" alt="" aria-hidden="true">
           <div>
-            <span>FindIt live board</span>
-            <strong>Latest 10 reports</strong>
+            <span>FindIt workspace</span>
+            <strong>Report, search, recover</strong>
           </div>
         </div>
-        <div class="preview-search">Search keys, wallet, ID card...</div>
+        <div class="preview-search">Search name, type, contact, or details...</div>
+        <div class="preview-stats" aria-label="FindIt feature summary">
+          <div>
+            <strong>10</strong>
+            <span>latest shown</span>
+          </div>
+          <div>
+            <strong>2</strong>
+            <span>report types</span>
+          </div>
+          <div>
+            <strong>1</strong>
+            <span>dashboard</span>
+          </div>
+        </div>
         <div class="preview-list">
           <div class="preview-row">
-            <span class="dot lost-dot"></span>
+            <span class="dot secure-dot"></span>
             <div>
-              <strong>Blue backpack</strong>
-              <p>Library entrance</p>
+              <strong>Secure sign in</strong>
+              <p>Email/password and Google authentication</p>
             </div>
-            <span class="status lost">Lost</span>
+            <span class="status secure">Auth</span>
           </div>
           <div class="preview-row">
-            <span class="dot found-dot"></span>
+            <span class="dot post-dot"></span>
             <div>
-              <strong>Student ID card</strong>
-              <p>Computer lab</p>
+              <strong>Post complete reports</strong>
+              <p>Name, description, contact, type, and image</p>
             </div>
-            <span class="status found">Found</span>
+            <span class="status post">Post</span>
           </div>
           <div class="preview-row">
-            <span class="dot match-dot"></span>
+            <span class="dot search-dot"></span>
             <div>
-              <strong>Black earbuds</strong>
-              <p>Cafeteria counter</p>
+              <strong>Search latest listings</strong>
+              <p>Ranked results from recent Firestore items</p>
             </div>
-            <span class="status match">Match</span>
+            <span class="status search">Search</span>
+          </div>
+          <div class="preview-row">
+            <span class="dot stats-dot"></span>
+            <div>
+              <strong>Track item counts</strong>
+              <p>Dashboard totals for lost and found reports</p>
+            </div>
+            <span class="status stats">Stats</span>
           </div>
         </div>
       </div>
@@ -193,7 +215,7 @@
         <h4>Quick Links</h4>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="pages/auth.html">Post Item</a></li>
+          <li><a href="pages/post-item.html">Post Item</a></li>
           <li><a href="#about">About</a></li>
         </ul>
       </div>

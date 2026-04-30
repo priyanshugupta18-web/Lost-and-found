@@ -20,6 +20,12 @@ const authReady = requireAuth((user) => {
 const form       = document.querySelector("form");
 const submitBtn  = form.querySelector("button[type='submit']") || form.querySelector("button");
 const imageInput = document.getElementById("image");
+const typeSelect = form["type"];
+
+const requestedType = new URLSearchParams(window.location.search).get("type");
+if (typeSelect && (requestedType === "lost" || requestedType === "found")) {
+    typeSelect.value = requestedType;
+}
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 function setLoading(isLoading) {

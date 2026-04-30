@@ -335,6 +335,37 @@ nav {
   font-size: 0.9rem;
 }
 
+.preview-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.preview-stats div {
+  padding: 0.75rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.preview-stats strong {
+  display: block;
+  font-family: "Syne", sans-serif;
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.preview-stats span {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--gray);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 .preview-list {
   display: grid;
   gap: 0.8rem;
@@ -368,9 +399,10 @@ nav {
   border-radius: 50%;
 }
 
-.lost-dot { background: var(--coral); }
-.found-dot { background: var(--accent); }
-.match-dot { background: var(--accent2); }
+.secure-dot { background: var(--blue); }
+.post-dot { background: var(--coral); }
+.search-dot { background: var(--accent); }
+.stats-dot { background: var(--accent2); }
 
 .status {
   padding: 0.28rem 0.55rem;
@@ -379,17 +411,22 @@ nav {
   font-weight: 800;
 }
 
-.status.lost {
+.status.secure {
+  background: #e5efff;
+  color: #1e4f9b;
+}
+
+.status.post {
   background: #fee9e5;
   color: #aa3d2e;
 }
 
-.status.found {
+.status.search {
   background: #def3eb;
   color: #17634f;
 }
 
-.status.match {
+.status.stats {
   background: #fff0c9;
   color: #8a5b00;
 }
