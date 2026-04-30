@@ -1,10 +1,18 @@
 // listings.js
 import algoliasearch from "https://cdn.jsdelivr.net/npm/algoliasearch@4/dist/algoliasearch-lite.esm.browser.js";
-import { appConfig } from "./app-config.js";
 
-const ALGOLIA_APP_ID = appConfig.algolia.appId;
-const ALGOLIA_SEARCH_KEY = appConfig.algolia.searchKey;
-const ALGOLIA_INDEX = appConfig.algolia.index;
+const algoliaDefaults = {
+  appId: "E8CKULBYXW",
+  searchKey: "070aef38b35761aa7a43f414998223ea",
+  index: "items",
+};
+
+const runtimeAlgoliaConfig = window.LOST_FOUND_CONFIG?.algolia || {};
+const algoliaConfig = { ...algoliaDefaults, ...runtimeAlgoliaConfig };
+
+const ALGOLIA_APP_ID = algoliaConfig.appId;
+const ALGOLIA_SEARCH_KEY = algoliaConfig.searchKey;
+const ALGOLIA_INDEX = algoliaConfig.index;
 
 const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_SEARCH_KEY);
 const index = client.initIndex(ALGOLIA_INDEX);
