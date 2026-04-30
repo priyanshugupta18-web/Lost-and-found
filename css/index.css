@@ -852,9 +852,13 @@ footer {
     padding: 0.8rem 4%;
   }
 
-  /* FIX: hide nav buttons on small screens to prevent overflow */
-  .nav-btns { display: none; }
-  .nav-links { display: none; }
+  /* Hide all navbar items on mobile; keep only brand/logo visible */
+  .nav-links,
+  #nav-guest,
+  #nav-user,
+  .nav-btns {
+    display: none !important;
+  }
 
   .hero {
     padding: 5rem 4% 3rem;
