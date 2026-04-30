@@ -18,7 +18,38 @@ body {
     margin-bottom: 2rem;
 }
 
-/* Grid layout */
+/* 🔍 Search Box */
+.search-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.search-box input {
+    padding: 0.6rem;
+    width: 250px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.search-box button {
+    padding: 0.6rem 1rem;
+    border: none;
+    background: #e8521a;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Message */
+.message {
+    text-align: center;
+    color: #777;
+    margin-top: 2rem;
+}
+
+/* Grid */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -77,4 +108,3 @@ body {
     background: #e0ffe5;
     color: #1a8f3c;
 }
-
