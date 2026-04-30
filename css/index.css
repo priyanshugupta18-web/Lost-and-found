@@ -7,14 +7,16 @@
 }
 
 :root {
-  --black: #0e0e0e;
-  --white: #f5f2ec;
-  --accent: #e8521a;
-  --accent2: #f0a500;
-  --gray: #888;
-  --light: #f0ece3;
+  --black: #17212b;
+  --white: #f7f9f5;
+  --accent: #1f7a68;
+  --accent2: #f6b73c;
+  --gray: #65717a;
+  --light: #edf4ee;
   --card-bg: #ffffff;
-  --border: #e0dbd0;
+  --border: #dce5de;
+  --blue: #2f6fce;
+  --coral: #e96b57;
 }
 
 html {
@@ -23,7 +25,7 @@ html {
 
 body {
   font-family: "DM Sans", sans-serif;
-  background: var(--white);
+  background: linear-gradient(135deg, #f7f9f5 0%, #eef6f1 58%, #fff4e3 100%);
   color: var(--black);
   overflow-x: hidden;
 }
@@ -39,7 +41,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 5%;
-  background: rgba(245, 242, 236, 0.92);
+  background: rgba(247, 249, 245, 0.92);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -55,8 +57,22 @@ nav {
   gap: 8px;
 }
 
-.logo span {
-  color: var(--accent);
+.brand-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--blue));
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  line-height: 1;
+  box-shadow: 0 8px 18px rgba(31, 122, 104, 0.18);
+}
+
+.brand-name {
+  color: var(--black);
 }
 
 .nav-links {
@@ -86,7 +102,7 @@ nav {
 .btn-outline {
   padding: 0.5rem 1.2rem;
   border: 1.5px solid var(--black);
-  border-radius: 50px;
+  border-radius: 8px;
   background: transparent;
   font-family: "DM Sans", sans-serif;
   font-size: 0.88rem;
@@ -105,7 +121,7 @@ nav {
 .btn-solid {
   padding: 0.5rem 1.2rem;
   border: 1.5px solid var(--accent);
-  border-radius: 50px;
+  border-radius: 8px;
   background: var(--accent);
   font-family: "DM Sans", sans-serif;
   font-size: 0.88rem;
@@ -117,8 +133,8 @@ nav {
 }
 
 .btn-solid:hover {
-  background: #c93f0e;
-  border-color: #c93f0e;
+  background: #165f51;
+  border-color: #165f51;
 }
 
 #nav-user {
@@ -139,35 +155,21 @@ nav {
   overflow: hidden;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  top: -100px;
-  right: -100px;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle,
-      rgba(232, 82, 26, 0.12) 0%,
-      transparent 70%);
-  pointer-events: none;
-}
-
 .hero-tag {
   display: inline-block;
-  background: var(--accent);
-  color: #fff;
+  background: #e3f2ed;
+  color: var(--accent);
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.3rem 0.9rem;
-  border-radius: 50px;
+  border-radius: 8px;
   margin-bottom: 1.5rem;
 }
 
 .hero h1 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: clamp(2.8rem, 5vw, 4.5rem);
   font-weight: 800;
   line-height: 1.1;
@@ -199,7 +201,7 @@ nav {
   background: var(--black);
   color: var(--white);
   border: none;
-  border-radius: 50px;
+  border-radius: 8px;
   font-family: "DM Sans", sans-serif;
   font-size: 1rem;
   font-weight: 500;
@@ -221,7 +223,7 @@ nav {
   background: var(--accent);
   color: #fff;
   border: none;
-  border-radius: 50px;
+  border-radius: 8px;
   font-family: "DM Sans", sans-serif;
   font-size: 1rem;
   font-weight: 500;
@@ -234,7 +236,7 @@ nav {
 }
 
 .hero-btn-found:hover {
-  background: #c93f0e;
+  background: #165f51;
   transform: translateY(-2px);
 }
 
@@ -244,7 +246,7 @@ nav {
   gap: 0;
   max-width: 480px;
   border: 1.5px solid var(--black);
-  border-radius: 50px;
+  border-radius: 8px;
   overflow: hidden;
   background: #fff;
 }
@@ -280,15 +282,122 @@ nav {
 /* Hero visual side */
 .hero-visual {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  justify-content: center;
   position: relative;
+}
+
+.preview-panel {
+  width: min(100%, 460px);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.2rem;
+  box-shadow: 0 24px 60px rgba(23, 33, 43, 0.12);
+}
+
+.preview-top {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.preview-top img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+}
+
+.preview-top span {
+  display: block;
+  color: var(--gray);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.preview-top strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-family: "Syne", sans-serif;
+  font-size: 1.1rem;
+}
+
+.preview-search {
+  margin: 1rem 0;
+  padding: 0.82rem 0.95rem;
+  color: var(--gray);
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.preview-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.preview-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.preview-row strong {
+  display: block;
+  font-size: 0.92rem;
+}
+
+.preview-row p {
+  margin: 0.15rem 0 0;
+  font-size: 0.78rem;
+  color: var(--gray);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.lost-dot { background: var(--coral); }
+.found-dot { background: var(--accent); }
+.match-dot { background: var(--accent2); }
+
+.status {
+  padding: 0.28rem 0.55rem;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.status.lost {
+  background: #fee9e5;
+  color: #aa3d2e;
+}
+
+.status.found {
+  background: #def3eb;
+  color: #17634f;
+}
+
+.status.match {
+  background: #fff0c9;
+  color: #8a5b00;
 }
 
 .hero-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 1.2rem 1.5rem;
   display: flex;
   align-items: center;
@@ -314,7 +423,7 @@ nav {
 .card-icon {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -322,9 +431,9 @@ nav {
   flex-shrink: 0;
 }
 
-.card-icon.lost  { background: #ffeae3; }
-.card-icon.found { background: #e3f5ea; }
-.card-icon.match { background: #fff3d6; }
+.card-icon.lost  { background: #fee9e5; }
+.card-icon.found { background: #def3eb; }
+.card-icon.match { background: #fff0c9; }
 
 .card-info h4 {
   font-family: "Syne", sans-serif;
@@ -341,14 +450,14 @@ nav {
 .card-badge {
   margin-left: auto;
   padding: 0.25rem 0.7rem;
-  border-radius: 50px;
+  border-radius: 8px;
   font-size: 0.72rem;
   font-weight: 500;
 }
 
-.card-badge.lost  { background: #ffeae3; color: var(--accent); }
-.card-badge.found { background: #e3f5ea; color: #2a9d4f; }
-.card-badge.match { background: #fff3d6; color: #c07800; }
+.card-badge.lost  { background: #fee9e5; color: #aa3d2e; }
+.card-badge.found { background: #def3eb; color: #17634f; }
+.card-badge.match { background: #fff0c9; color: #8a5b00; }
 
 /* ── STATS ── */
 .stats {
@@ -389,12 +498,12 @@ nav {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 0.3rem 0.9rem;
-  border-radius: 50px;
+  border-radius: 8px;
   margin-bottom: 1rem;
 }
 
 .section-title {
-  font-family: "Poppins", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: clamp(1.8rem, 3vw, 2.8rem);
   font-weight: 800;
   margin-bottom: 1rem;
@@ -438,14 +547,14 @@ nav {
 .step-num {
   width: 72px;
   height: 72px;
-  border-radius: 50%;
+  border-radius: 8px;
   background: var(--light);
   border: 2px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 1.2rem;
-  font-family: "Poppins", sans-serif;
+  font-family: "Syne", sans-serif;
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--accent);
@@ -499,7 +608,7 @@ nav {
   gap: 0.5rem;
   padding: 1.2rem 0.5rem;
   background: #fff;
-  border-radius: 16px;
+  border-radius: 8px;
   border: 1px solid var(--border);
   cursor: pointer;
   text-decoration: none;
@@ -510,7 +619,7 @@ nav {
 .cat-item:hover {
   border-color: var(--accent);
   transform: translateY(-4px);
-  box-shadow: 0 4px 20px rgba(232, 82, 26, 0.15);
+  box-shadow: 0 4px 20px rgba(31, 122, 104, 0.15);
 }
 
 .cat-emoji { font-size: 1.6rem; }
@@ -556,7 +665,7 @@ nav {
 .item-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 8px;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
@@ -585,13 +694,13 @@ nav {
   top: 12px;
   left: 12px;
   padding: 0.25rem 0.7rem;
-  border-radius: 50px;
+  border-radius: 8px;
   font-size: 0.72rem;
   font-weight: 600;
 }
 
-.item-type.lost  { background: #ffeae3; color: var(--accent); }
-.item-type.found { background: #e3f5ea; color: #2a9d4f; }
+.item-type.lost  { background: #fee9e5; color: #aa3d2e; }
+.item-type.found { background: #def3eb; color: #17634f; }
 
 .item-body { padding: 1.2rem; }
 
@@ -626,7 +735,7 @@ nav {
 .cta {
   margin: 0 5% 6rem;
   background: var(--black);
-  border-radius: 24px;
+  border-radius: 8px;
   padding: 4rem;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -637,12 +746,14 @@ nav {
 }
 
 .cta::after {
-  content: "🔍";
+  content: "FindIt";
   position: absolute;
   right: 200px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 8rem;
+  font-family: "Syne", sans-serif;
+  font-size: 5rem;
+  font-weight: 800;
   opacity: 0.06;
   pointer-events: none;
 }
@@ -662,7 +773,7 @@ nav {
   background: var(--accent);
   color: #fff;
   border: none;
-  border-radius: 50px;
+  border-radius: 8px;
   font-family: "DM Sans", sans-serif;
   font-size: 1rem;
   font-weight: 500;
@@ -673,7 +784,7 @@ nav {
 }
 
 .cta-btn:hover {
-  background: #c93f0e;
+  background: #165f51;
   transform: scale(1.03);
 }
 
@@ -695,7 +806,11 @@ footer {
 .footer-brand .logo {
   color: var(--white);
   margin-bottom: 1rem;
-  display: block;
+  display: flex;
+}
+
+.footer-brand .brand-name {
+  color: var(--white);
 }
 
 .footer-brand p {
@@ -763,7 +878,7 @@ footer {
 .about-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 1.5rem;
   text-align: center;
   transition: all 0.2s;
@@ -782,9 +897,11 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 8px;
   background: var(--light);
-  font-size: 1.4rem;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 800;
 }
 
 .about-card h4 {
@@ -915,7 +1032,7 @@ footer {
   .cta {
     margin: 0 4% 4rem;
     padding: 2.5rem 1.5rem;
-    border-radius: 16px;
+    border-radius: 8px;
   }
 
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }

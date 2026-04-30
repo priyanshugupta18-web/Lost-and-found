@@ -3,23 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listings</title>
+  <title>FindIt - Listings</title>
   <link rel="icon" type="image/png" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../css/listings.css">
-  <!-- ❌ Remove the algoliasearch CDN script tag — imported in JS instead -->
 </head>
 
 <body>
   <div class="container">
-    <h2 class="title">Lost & Found Items</h2>
+    <a class="brand" href="../index.html" aria-label="FindIt home">
+      <span class="brand-mark">F</span>
+      <span>FindIt</span>
+    </a>
+    <p class="eyebrow">Latest campus reports</p>
+    <h2 class="title">FindIt Listings</h2>
 
     <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search item name..." />
+      <input type="text" id="searchInput" placeholder="Search item name, type, or details..." />
       <button id="searchBtn">Search</button>
     </div>
 
     <p id="message" class="message">
-      Search for a lost or found item above 👆
+      Search for an item above or browse the latest reports.
     </p>
 
     <div id="items" class="grid"></div>

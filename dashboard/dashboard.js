@@ -47,9 +47,9 @@ async function loadStats() {
         if (statFound) statFound.textContent = foundSnap.size;
     } catch (err) {
         console.error("Failed to load stats:", err);
-        if (statTotal) statTotal.textContent = "—";
-        if (statLost)  statLost.textContent  = "—";
-        if (statFound) statFound.textContent = "—";
+        if (statTotal) statTotal.textContent = "-";
+        if (statLost)  statLost.textContent  = "-";
+        if (statFound) statFound.textContent = "-";
     }
 }
 

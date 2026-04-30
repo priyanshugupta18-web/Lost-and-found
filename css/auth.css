@@ -5,14 +5,14 @@
 }
 
 :root {
-    --black: #0e0e0e;
-    --white: #f5f2ec;
-    --accent: #e8521a;
-    --accent2: #f0a500;
-    --gray: #777;
-    --light: #f9f7f2;
-    --card-bg: rgba(255, 255, 255, 0.7);
-    --border-soft: rgba(0, 0, 0, 0.1);
+    --black: #17212b;
+    --white: #f7f9f5;
+    --accent: #1f7a68;
+    --accent2: #f6b73c;
+    --gray: #65717a;
+    --light: #edf4ee;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --border-soft: #dce5de;
 }
 
 body {
@@ -20,8 +20,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: var(--white);
-    font-family: sans-serif;
+    background: linear-gradient(135deg, #f7f9f5 0%, #eef6f1 58%, #fff4e3 100%);
+    font-family: "Segoe UI", system-ui, sans-serif;
 }
 
 .container {
@@ -29,16 +29,50 @@ body {
     max-width: 400px;
     background-color: var(--card-bg);
     padding: 2.5rem;
-    border-radius: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    box-shadow: 0 24px 60px rgba(23, 33, 43, 0.1);
     backdrop-filter: blur(10px); 
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 1.25rem;
+    margin-bottom: 1.4rem;
+}
+
+.brand-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), #2f6fce);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
 }
 
 .container h2 {
     text-align: center;
-    color: var(--accent);
-    margin-bottom: 1rem;
+    color: var(--black);
+    margin-bottom: 0.35rem;
     text-transform: capitalize;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 1.1rem;
 }
 
 .container input {
@@ -48,15 +82,15 @@ body {
     padding: 12px;
     border: 1px solid transparent;
     outline: none;
-    border-radius: 10px;
-    background-color: rgb(241, 240, 240);
+    border-radius: 8px;
+    background-color: var(--light);
     transition: all 0.3s ease;
 }
 
 .container input:focus {
     border: 1px solid var(--accent);
     background-color: #fff;
-    box-shadow: 0 0 8px rgba(232, 82, 26, 0.2);
+    box-shadow: 0 0 0 3px rgba(31, 122, 104, 0.16);
 }
 
 .btn {
@@ -71,14 +105,14 @@ body {
     border: none;
     outline: none;
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 600;
     transition: opacity 0.2s;
 }
 
 #login, #signup {
-    background: linear-gradient(135deg, var(--accent2), var(--accent));
+    background: linear-gradient(135deg, var(--accent), #2f6fce);
     color: white;
 }
 

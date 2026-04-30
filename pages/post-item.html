@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>post-item</title>
+    <title>FindIt - Report Item</title>
     <link rel="icon" type="image/png" href="../assets/favicon.svg">
     <link
         href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
@@ -15,25 +15,30 @@
 <body>
     <div class="container">
         <form action="">
-            <h2 id="form-title">Report Item</h2>
+            <a class="brand" href="../index.html" aria-label="FindIt home">
+                <span class="brand-mark">F</span>
+                <span>FindIt</span>
+            </a>
+            <h2 id="form-title">Report an item</h2>
+            <p class="form-subtitle">Add the details people need to identify and return it.</p>
             <div>
-                <label for="item-name">Enter name of the item:</label>
-                <input type="text" name="item-name" placeholder="Item name here" required>
+                <label for="item-name">Item name</label>
+                <input type="text" name="item-name" placeholder="Blue backpack" required>
             </div>
             <div>
-                <label for="Description">Description:</label>
-                <textarea name="Description" id="Description" placeholder="write something..." required></textarea>
+                <label for="Description">Description</label>
+                <textarea name="Description" id="Description" placeholder="Add color, location, time, or identifying details" required></textarea>
             </div>
             <div>
-                <label for="image">Upload Image:</label>
+                <label for="image">Upload image</label>
                 <input type="file" id="image" accept="image/*">
             </div>
             <div>
-                <label for="phone-number">Enter your mobile number:</label>
+                <label for="phone-number">Mobile number</label>
                 <input type="tel" id="phone" name="phone-number" required>
             </div>
             <div>
-                <label for="type">Type:</label>
+                <label for="type">Report type</label>
                 <select name="type">
                     <option value="lost">Lost</option>
                     <option value="found">Found</option>

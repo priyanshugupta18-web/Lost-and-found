@@ -1,11 +1,13 @@
 :root {
-    --bg-a: #fdfcfb;
-    --bg-b: #f0ece3;
+    --bg-a: #f7f9f5;
+    --bg-b: #eef6f1;
     --surface: #ffffff;
-    --accent: #e8521a;
-    --text: #171717;
-    --muted: #6f6f6f;
-    --border: #ebe4d8;
+    --accent: #1f7a68;
+    --blue: #2f6fce;
+    --coral: #e96b57;
+    --text: #17212b;
+    --muted: #65717a;
+    --border: #dce5de;
     --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.06);
     --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.09);
 }
@@ -18,7 +20,7 @@
 
 body {
     font-family: "DM Sans", system-ui, sans-serif;
-    background: linear-gradient(135deg, var(--bg-a), var(--bg-b));
+    background: linear-gradient(135deg, var(--bg-a) 0%, var(--bg-b) 58%, #fff4e3 100%);
     color: var(--text);
     margin: 0;
     min-height: 100dvh;
@@ -30,9 +32,45 @@ body {
     padding: 2.2rem 0 3rem;
 }
 
-.title {
+.brand {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+.brand-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--blue));
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    box-shadow: 0 8px 18px rgba(31, 122, 104, 0.18);
+}
+
+.eyebrow {
+    margin: 0 0 0.4rem;
     text-align: center;
     color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.title {
+    text-align: center;
+    color: var(--text);
     margin: 0 0 1.4rem;
     font-size: clamp(1.45rem, 2.8vw, 2rem);
     font-weight: 800;
@@ -50,8 +88,8 @@ body {
 .search-box input {
     width: min(560px, 100%);
     padding: 0.82rem 0.95rem;
-    border-radius: 0.75rem;
-    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    border: 1px solid var(--border);
     background: #fff;
     font-size: 0.95rem;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -60,15 +98,15 @@ body {
 .search-box input:focus {
     outline: none;
     border-color: var(--accent);
-    box-shadow: 0 0 0 3px rgba(232, 82, 26, 0.15);
+    box-shadow: 0 0 0 3px rgba(31, 122, 104, 0.16);
 }
 
 .search-box button {
     padding: 0.82rem 1.2rem;
     border: none;
-    background: linear-gradient(135deg, #f0a500, var(--accent));
+    background: linear-gradient(135deg, var(--accent), var(--blue));
     color: #fff;
-    border-radius: 0.75rem;
+    border-radius: 8px;
     cursor: pointer;
     font-weight: 700;
     font-size: 0.9rem;
@@ -101,7 +139,7 @@ body {
 .card {
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 1rem;
+    border-radius: 8px;
     padding: 0.88rem;
     box-shadow: var(--shadow-sm);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -116,7 +154,7 @@ body {
     width: 100%;
     aspect-ratio: 16 / 10;
     object-fit: cover;
-    border-radius: 0.75rem;
+    border-radius: 8px;
     cursor: pointer;
     background: #f4f1ea;
 }
@@ -139,7 +177,7 @@ body {
 .badge {
     display: inline-block;
     padding: 0.32rem 0.72rem;
-    border-radius: 999px;
+    border-radius: 8px;
     font-size: 0.72rem;
     font-weight: 700;
     margin-top: 0.6rem;
@@ -147,13 +185,13 @@ body {
 }
 
 .lost {
-    background: #ffe7e1;
-    color: #c53b10;
+    background: #fee9e5;
+    color: #aa3d2e;
 }
 
 .found {
-    background: #e4faea;
-    color: #197739;
+    background: #def3eb;
+    color: #17634f;
 }
 
 @media (max-width: 768px) {

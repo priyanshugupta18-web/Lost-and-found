@@ -7,14 +7,14 @@
 
 /* ── Tokens ────────────────────────────────────────────────────────────────── */
 :root {
-    --accent:      #e8521a;
-    --accent2:     #f0a500;
-    --accent-dim:  rgba(232, 82, 26, 0.08);
-    --white:       #f7f4ef;
+    --accent:      #1f7a68;
+    --accent2:     #f6b73c;
+    --accent-dim:  rgba(31, 122, 104, 0.1);
+    --white:       #f7f9f5;
     --surface:     #ffffff;
-    --black:       #0e0e0e;
-    --gray:        #888;
-    --gray-light:  #eeebe5;
+    --black:       #17212b;
+    --gray:        #65717a;
+    --gray-light:  #dce5de;
     --radius-sm:   8px;
     --radius-md:   14px;
     --radius-lg:   20px;
@@ -28,7 +28,7 @@ html { scroll-behavior: smooth; }
 
 body {
     font-family: "Segoe UI", system-ui, sans-serif;
-    background: var(--white);
+    background: linear-gradient(135deg, #f7f9f5 0%, #eef6f1 58%, #fff4e3 100%);
     color: var(--black);
     min-height: 100dvh;
     display: flex;
@@ -52,11 +52,27 @@ body {
 }
 
 .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-size: 1.2rem;
     font-weight: 800;
     letter-spacing: -0.3px;
-    color: var(--accent);
+    color: var(--black);
     text-decoration: none;
+}
+
+.brand-mark {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, var(--accent), #2f6fce);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    box-shadow: 0 8px 18px rgba(31, 122, 104, 0.18);
 }
 
 /* ── User profile / dropdown ───────────────────────────────────────────────── */
@@ -277,7 +293,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.15rem;
+    font-size: 0.85rem;
+    font-weight: 800;
     flex-shrink: 0;
     transition: background 0.2s;
 }
@@ -289,7 +306,7 @@ body {
 /* Highlighted row (Post Item) */
 .highlight {
     border-left: 4px solid var(--accent);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    border-radius: var(--radius-md);
 }
 
 .highlight .action-icon {

@@ -1,6 +1,6 @@
-# Lost & Found Web App
+# FindIt
 
-A lightweight open source web app for reporting and finding lost or found items. Users can sign in, post item details with an optional image, browse the latest listings, and search recent reports.
+FindIt is a lightweight open source web app for reporting and finding lost or found items. Users can sign in, post item details with an optional image, browse the latest listings, and search recent reports.
 
 ## Features
 
@@ -21,7 +21,7 @@ A lightweight open source web app for reporting and finding lost or found items.
 ## Project Structure
 
 ```text
-lost-and-found/
+findit/
 |-- index.html
 |-- LICENSE
 |-- README.md

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard — Lost &amp; Found</title>
+    <title>FindIt - Dashboard</title>
     <link rel="icon" type="image/png" href="../assets/favicon.svg">
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
     <meta http-equiv="Pragma" content="no-cache">
@@ -13,7 +13,10 @@
 <body>
 
 <header class="top-nav">
-    <a class="brand" href="#">Lost &amp; Found</a>
+    <a class="brand" href="../index.html">
+        <span class="brand-mark">F</span>
+        <span>FindIt</span>
+    </a>
     <div class="user-profile" id="profileArea">
         <span id="userNameDisplay">User</span>
         <div class="avatar" id="userAvatar">U</div>
@@ -25,22 +28,22 @@
 
 <main class="dash-content">
     <div class="welcome-banner">
-        <h1 id="welcomeGreeting">Hi, User 👋</h1>
-        <p id="statusMessage">Welcome back!</p>
+        <h1 id="welcomeGreeting">Hi, User</h1>
+        <p id="statusMessage">Welcome back to FindIt.</p>
     </div>
 
     <div class="stats-row">
         <div class="stat-card">
             <div class="stat-label">Total items</div>
-            <div class="stat-value" id="statTotal">—</div>
+            <div class="stat-value" id="statTotal">-</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">Lost</div>
-            <div class="stat-value orange" id="statLost">—</div>
+            <div class="stat-value orange" id="statLost">-</div>
         </div>
         <div class="stat-card">
             <div class="stat-label">Found</div>
-            <div class="stat-value amber" id="statFound">—</div>
+            <div class="stat-value amber" id="statFound">-</div>
         </div>
     </div>
 
@@ -50,16 +53,16 @@
         <a class="action-row" href="listings.html">
             <div>
                 <h3>View Listings</h3>
-                <p>Browse all lost &amp; found items</p>
+                <p>Browse the latest FindIt reports</p>
             </div>
-            <div class="action-icon">🔍</div>
+            <div class="action-icon">01</div>
         </a>
         <a class="action-row highlight" href="post-item.html">
             <div>
                 <h3>Post Item</h3>
                 <p>Report a lost or found item</p>
             </div>
-            <div class="action-icon">＋</div>
+            <div class="action-icon">02</div>
         </a>
     </div>
 </main>
