@@ -1,110 +1,194 @@
+:root {
+    --bg-a: #fdfcfb;
+    --bg-b: #f0ece3;
+    --surface: #ffffff;
+    --accent: #e8521a;
+    --text: #171717;
+    --muted: #6f6f6f;
+    --border: #ebe4d8;
+    --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.09);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
-    font-family: "DM Sans", sans-serif;
-    background: linear-gradient(135deg, #fdfcfb, #f0ece3);
+    font-family: "DM Sans", system-ui, sans-serif;
+    background: linear-gradient(135deg, var(--bg-a), var(--bg-b));
+    color: var(--text);
     margin: 0;
+    min-height: 100dvh;
 }
 
-/* Container */
 .container {
-    padding: 2rem;
-    max-width: 1100px;
-    margin: auto;
+    width: min(1120px, 94%);
+    margin: 0 auto;
+    padding: 2.2rem 0 3rem;
 }
 
-/* Title */
 .title {
     text-align: center;
-    color: #e8521a;
-    margin-bottom: 2rem;
+    color: var(--accent);
+    margin: 0 0 1.4rem;
+    font-size: clamp(1.45rem, 2.8vw, 2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
 }
 
-/* 🔍 Search Box */
 .search-box {
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 1.5rem;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
 }
 
 .search-box input {
-    padding: 0.6rem;
-    width: 250px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    width: min(560px, 100%);
+    padding: 0.82rem 0.95rem;
+    border-radius: 0.75rem;
+    border: 1px solid #d8d8d8;
+    background: #fff;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-box input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(232, 82, 26, 0.15);
 }
 
 .search-box button {
-    padding: 0.6rem 1rem;
+    padding: 0.82rem 1.2rem;
     border: none;
-    background: #e8521a;
-    color: white;
-    border-radius: 8px;
+    background: linear-gradient(135deg, #f0a500, var(--accent));
+    color: #fff;
+    border-radius: 0.75rem;
     cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.18s ease, filter 0.18s ease;
 }
 
-/* Message */
+.search-box button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.02);
+}
+
+.search-box button:active {
+    transform: translateY(0);
+}
+
 .message {
     text-align: center;
-    color: #777;
-    margin-top: 2rem;
-}
-
-/* Grid */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-/* Card */
-.card {
-    background: white;
-    border-radius: 1rem;
-    padding: 1rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-/* Image */
-.card img {
-    width: 100%;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 0.8rem;
-}
-
-/* Content */
-.card h3 {
-    margin: 0.5rem 0;
-}
-
-.card p {
-    color: #555;
+    color: var(--muted);
+    margin: 0.2rem 0 1.3rem;
     font-size: 0.9rem;
 }
 
-/* Badge */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 0.88rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    background: #f4f1ea;
+}
+
+.card h3 {
+    margin: 0.72rem 0 0.42rem;
+    font-size: 1.03rem;
+    line-height: 1.25;
+    word-break: break-word;
+}
+
+.card p {
+    color: #585858;
+    font-size: 0.89rem;
+    line-height: 1.45;
+    margin: 0.22rem 0;
+    word-break: break-word;
+}
+
 .badge {
     display: inline-block;
-    padding: 0.3rem 0.7rem;
+    padding: 0.32rem 0.72rem;
     border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    margin-top: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin-top: 0.6rem;
+    letter-spacing: 0.03em;
 }
 
-/* Lost */
 .lost {
-    background: #ffe5e0;
-    color: #e8521a;
+    background: #ffe7e1;
+    color: #c53b10;
 }
 
-/* Found */
 .found {
-    background: #e0ffe5;
-    color: #1a8f3c;
+    background: #e4faea;
+    color: #197739;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: min(1120px, 92%);
+        padding-top: 1.5rem;
+    }
+
+    .search-box {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-box input,
+    .search-box button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 92%;
+        padding-bottom: 2rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+
+    .card {
+        padding: 0.8rem;
+    }
+
+    .card h3 {
+        font-size: 0.98rem;
+    }
 }
