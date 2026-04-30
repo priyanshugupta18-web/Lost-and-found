@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     try {
       await signInWithEmailAndPassword(auth, email.value, password.value);
-      window.location.href = "dashboard.html";
+      window.location.href = "../pages/dashboard.html";
     } catch (err) {
       console.error(err);
       alert(err.message);
@@ -50,7 +50,7 @@ window.addEventListener("DOMContentLoaded", () => {
   googleBtn.addEventListener("click", async () => {
     try {
       await signInWithPopup(auth, provider);
-      window.location.href = "dashboard.html";
+      window.location.href = "../pages/dashboard.html";
     } catch (err) {
       console.error(err);
 

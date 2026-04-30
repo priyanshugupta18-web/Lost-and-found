@@ -5,24 +5,22 @@
   <title>Listings</title>
   <link rel="icon" type="image/png" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../css/listings.css">
+  <!-- ❌ Remove the algoliasearch CDN script tag — imported in JS instead -->
 </head>
 
 <body>
   <div class="container">
     <h2 class="title">Lost & Found Items</h2>
 
-    <!-- 🔍 Search Bar -->
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="Search item name..." />
       <button id="searchBtn">Search</button>
     </div>
 
-    <!-- 📝 Default Message -->
     <p id="message" class="message">
       Search for a lost or found item above 👆
     </p>
 
-    <!-- 📦 Results -->
     <div id="items" class="grid"></div>
   </div>
 

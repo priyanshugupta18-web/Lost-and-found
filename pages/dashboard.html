@@ -3,55 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard — Lost &amp; Found</title>
     <link rel="icon" type="image/png" href="../assets/favicon.svg">
-
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="stylesheet" href="../css/dashboard.css">
 </head>
-
 <body>
 
 <header class="top-nav">
-    <div class="brand">Lost & Found</div>
-
+    <a class="brand" href="#">Lost &amp; Found</a>
     <div class="user-profile" id="profileArea">
         <span id="userNameDisplay">User</span>
         <div class="avatar" id="userAvatar">U</div>
-
         <div class="profile-dropdown" id="dropdown">
-            <button id="logoutBtn">Logout</button>
+            <button type="button" id="logoutBtn">Logout</button>
         </div>
     </div>
 </header>
 
 <main class="dash-content">
-
     <div class="welcome-banner">
         <h1 id="welcomeGreeting">Hi, User 👋</h1>
         <p id="statusMessage">Welcome back!</p>
     </div>
 
+    <div class="stats-row">
+        <div class="stat-card">
+            <div class="stat-label">Total items</div>
+            <div class="stat-value" id="statTotal">—</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Lost</div>
+            <div class="stat-value orange" id="statLost">—</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">Found</div>
+            <div class="stat-value amber" id="statFound">—</div>
+        </div>
+    </div>
+
+    <p class="section-label">Quick actions</p>
+
     <div class="main-actions">
-        <div class="action-row" onclick="location.href='listings.html'">
+        <a class="action-row" href="listings.html">
             <div>
                 <h3>View Listings</h3>
-                <p>Browse all lost & found items</p>
+                <p>Browse all lost &amp; found items</p>
             </div>
             <div class="action-icon">🔍</div>
-        </div>
-
-        <div class="action-row highlight" onclick="location.href='post-item.html'">
+        </a>
+        <a class="action-row highlight" href="post-item.html">
             <div>
                 <h3>Post Item</h3>
                 <p>Report a lost or found item</p>
             </div>
             <div class="action-icon">＋</div>
-        </div>
+        </a>
     </div>
-
 </main>
 
 <script type="module" src="../dashboard/dashboard.js"></script>
-
 </body>
 </html>
