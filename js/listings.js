@@ -2,12 +2,12 @@
 import { db } from "./firebase.js";
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
 const DEFAULT_IMAGE = "../assets/placeholder-item.svg";
+const DEFAULT_VISIBLE_ITEMS = 10;
 
 const container = document.getElementById("items");
 const message = document.getElementById("message");
 const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
-const MIN_FUZZY_SIMILARITY = 0.75;
 let allItems = [];
 let isLoaded = false;
 let loadFailed = false;
@@ -26,102 +26,28 @@ function tokenize(value) {
     .filter(Boolean);
 }
 
-function levenshteinDistance(a, b) {
-  const left = normalizeText(a);
-  const right = normalizeText(b);
-  if (!left.length) return right.length;
-  if (!right.length) return left.length;
-
-  const row = new Array(right.length + 1);
-  for (let j = 0; j <= right.length; j += 1) row[j] = j;
-
-  for (let i = 1; i <= left.length; i += 1) {
-    let prev = i - 1;
-    row[0] = i;
-    for (let j = 1; j <= right.length; j += 1) {
-      const tmp = row[j];
-      const cost = left[i - 1] === right[j - 1] ? 0 : 1;
-      row[j] = Math.min(row[j] + 1, row[j - 1] + 1, prev + cost);
-      prev = tmp;
-    }
-  }
-
-  return row[right.length];
+function getTimestampValue(item) {
+  const raw = item.createdAt;
+  if (!raw) return 0;
+  if (typeof raw.toMillis === "function") return raw.toMillis();
+  if (raw.seconds) return raw.seconds * 1000;
+  return 0;
 }
 
-function similarity(a, b) {
-  const aa = normalizeText(a);
-  const bb = normalizeText(b);
-  const maxLength = Math.max(aa.length, bb.length);
-  if (maxLength === 0) return 1;
-  const distance = levenshteinDistance(aa, bb);
-  return 1 - distance / maxLength;
+function getLatestItems(items, limit = DEFAULT_VISIBLE_ITEMS) {
+  return [...items]
+    .sort((a, b) => getTimestampValue(b) - getTimestampValue(a))
+    .slice(0, limit);
 }
 
-function getItemScore(item, tokens, fullQuery) {
+function matchesQuery(item, tokens) {
+  if (tokens.length === 0) return true;
   const name = normalizeText(item.name);
   const description = normalizeText(item.description);
   const phone = normalizeText(item.phone);
   const type = normalizeText(item.type);
-  const textBlob = `${name} ${description} ${phone} ${type}`;
-
-  let score = 0;
-  let matchedTokens = 0;
-
-  if (name === fullQuery) score += 150;
-  else if (name.startsWith(fullQuery)) score += 95;
-  else if (name.includes(fullQuery)) score += 70;
-
-  if (description.includes(fullQuery)) score += 30;
-  if (phone.includes(fullQuery)) score += 20;
-  if (type === fullQuery) score += 25;
-
-  tokens.forEach((token) => {
-    let tokenMatched = false;
-
-    if (name.startsWith(token)) {
-      score += 35;
-      tokenMatched = true;
-    } else if (name.includes(token)) {
-      score += 20;
-      tokenMatched = true;
-    }
-
-    if (description.includes(token)) {
-      score += 10;
-      tokenMatched = true;
-    }
-    if (phone.includes(token)) {
-      score += 8;
-      tokenMatched = true;
-    }
-    if (type === token) {
-      score += 8;
-      tokenMatched = true;
-    }
-
-    if (!tokenMatched) {
-      // Basic typo tolerance against item name words.
-      const words = name.split(/\s+/).filter(Boolean);
-      const fuzzyHit = words.some((word) => similarity(word, token) >= MIN_FUZZY_SIMILARITY);
-      if (fuzzyHit) {
-        score += 12;
-        tokenMatched = true;
-      }
-    }
-
-    if (tokenMatched) matchedTokens += 1;
-  });
-
-  if (matchedTokens === tokens.length && tokens.length > 0) {
-    score += 25;
-  }
-
-  if (tokens.length > 0 && !textBlob.includes(tokens[0]) && matchedTokens === 0) {
-    return 0;
-  }
-
-  return score;
+  const haystack = `${name} ${description} ${phone} ${type}`;
+  return tokens.every((token) => haystack.includes(token));
 }
 
 function renderItems(items) {
@@ -175,7 +101,14 @@ async function loadItems() {
       ...doc.data(),
     });
     isLoaded = true;
-    message.textContent = "Search for a lost or found item above 👆";
+    const latest = getLatestItems(allItems);
+    if (latest.length === 0) {
+      message.textContent = "No items posted yet.";
+      container.innerHTML = "";
+    } else {
+      message.textContent = `Showing latest ${latest.length} item(s)`;
+      renderItems(latest);
+    }
   } catch (error) {
     console.error("Listings load error:", error);
     loadFailed = true;
@@ -191,30 +124,30 @@ async function searchItems() {
 
   if (!isLoaded) await loadItems();
   if (loadFailed) return;
-  container.innerHTML = "";
 
   if (!searchValue) {
-    message.textContent = "Search for a lost or found item above 👆";
+    const latest = getLatestItems(allItems);
+    if (latest.length === 0) {
+      message.textContent = "No items posted yet.";
+      container.innerHTML = "";
+    } else {
+      message.textContent = `Showing latest ${latest.length} item(s)`;
+      renderItems(latest);
+    }
     return;
   }
 
-  const normalizedQuery = normalizeText(searchValue);
   const tokens = tokenize(searchValue);
+  const results = getLatestItems(allItems.filter((item) => matchesQuery(item, tokens)), 20);
 
-  const ranked = allItems
-    .map((item) => ({ item, score: getItemScore(item, tokens, normalizedQuery) }))
-    .filter((entry) => entry.score > 0)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 20)
-    .map((entry) => entry.item);
-
-  if (ranked.length === 0) {
+  if (results.length === 0) {
     message.textContent = "No items found 😕";
+    container.innerHTML = "";
     return;
   }
 
-  message.textContent = `${ranked.length} result(s) found`;
-  renderItems(ranked);
+  message.textContent = `${results.length} result(s) found`;
+  renderItems(results);
 }
 
 loadItems();

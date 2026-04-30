@@ -171,6 +171,11 @@ body {
     .search-box button {
         width: 100%;
     }
+
+    /* Prevent iOS Safari auto-zoom on focused inputs */
+    .search-box input {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 480px) {
