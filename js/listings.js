@@ -10,6 +10,7 @@ const searchInput = document.getElementById("searchInput");
 const MIN_FUZZY_SIMILARITY = 0.75;
 let allItems = [];
 let isLoaded = false;
+let loadFailed = false;
 
 if (!container || !message || !searchBtn || !searchInput) {
   throw new Error("Listings page is missing required DOM elements.");
@@ -163,7 +164,9 @@ function renderItems(items) {
 
 async function loadItems() {
   if (isLoaded) return;
+  loadFailed = false;
   message.textContent = "Loading items...";
+  searchBtn.disabled = true;
 
   try {
     const snapshot = await getDocs(collection(db, "items"));
@@ -175,7 +178,10 @@ async function loadItems() {
     message.textContent = "Search for a lost or found item above 👆";
   } catch (error) {
     console.error("Listings load error:", error);
-    message.textContent = "Could not load items. Please refresh and try again.";
+    loadFailed = true;
+    message.textContent = "Could not load items (check Firestore rules/network). Please refresh and try again.";
+  } finally {
+    searchBtn.disabled = false;
   }
 }
 
@@ -184,6 +190,7 @@ async function searchItems() {
   const searchValue = searchInput.value.trim();
 
   if (!isLoaded) await loadItems();
+  if (loadFailed) return;
   container.innerHTML = "";
 
   if (!searchValue) {
