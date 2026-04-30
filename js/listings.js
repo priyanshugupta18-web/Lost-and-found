@@ -1,15 +1,18 @@
 // listings.js
 import { db } from "./firebase.js";
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
 const DEFAULT_IMAGE = "../assets/placeholder-item.svg";
 const DEFAULT_VISIBLE_ITEMS = 10;
+const SEARCH_RESULT_LIMIT = DEFAULT_VISIBLE_ITEMS;
 
-const container = document.getElementById("items");
-const message = document.getElementById("message");
-const searchBtn = document.getElementById("searchBtn");
+const container  = document.getElementById("items");
+const message    = document.getElementById("message");
+const searchBtn  = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
-let allItems = [];
-let isLoaded = false;
+
+let allItems   = [];
+let isLoaded   = false;
 let loadFailed = false;
 
 if (!container || !message || !searchBtn || !searchInput) {
@@ -17,7 +20,12 @@ if (!container || !message || !searchBtn || !searchInput) {
 }
 
 function normalizeText(value) {
-  return String(value ?? "").toLowerCase().trim();
+  return String(value ?? "")
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
 }
 
 function tokenize(value) {
@@ -42,12 +50,46 @@ function getLatestItems(items, limit = DEFAULT_VISIBLE_ITEMS) {
 
 function matchesQuery(item, tokens) {
   if (tokens.length === 0) return true;
-  const name = normalizeText(item.name);
-  const description = normalizeText(item.description);
-  const phone = normalizeText(item.phone);
-  const type = normalizeText(item.type);
-  const haystack = `${name} ${description} ${phone} ${type}`;
+  const haystack = getSearchText(item);
   return tokens.every((token) => haystack.includes(token));
+}
+
+function getSearchText(item) {
+  return [
+    normalizeText(item.name),
+    normalizeText(item.description),
+    normalizeText(item.phone),
+    normalizeText(item.type),
+  ].join(" ");
+}
+
+function getSearchScore(item, tokens) {
+  const name = normalizeText(item.name);
+  const type = normalizeText(item.type);
+  const description = normalizeText(item.description);
+  let score = 0;
+
+  tokens.forEach((token) => {
+    if (name === token) score += 50;
+    else if (name.startsWith(token)) score += 30;
+    else if (name.includes(token)) score += 20;
+
+    if (type === token) score += 10;
+    if (description.includes(token)) score += 5;
+  });
+
+  return score;
+}
+
+function getSearchResults(items, tokens, limit = SEARCH_RESULT_LIMIT) {
+  return items
+    .filter((item) => matchesQuery(item, tokens))
+    .sort((a, b) => {
+      const scoreDiff = getSearchScore(b, tokens) - getSearchScore(a, tokens);
+      if (scoreDiff !== 0) return scoreDiff;
+      return getTimestampValue(b) - getTimestampValue(a);
+    })
+    .slice(0, limit);
 }
 
 function renderItems(items) {
@@ -63,9 +105,7 @@ function renderItems(items) {
     image.src = data.image || DEFAULT_IMAGE;
     image.dataset.url = data.image ?? "";
     image.alt = String(data.name ?? "Item image");
-    image.onerror = () => {
-      image.src = DEFAULT_IMAGE;
-    };
+    image.onerror = () => { image.src = DEFAULT_IMAGE; };
 
     const title = document.createElement("h3");
     title.textContent = String(data.name ?? "Untitled item");
@@ -96,11 +136,15 @@ async function loadItems() {
 
   try {
     const snapshot = await getDocs(collection(db, "items"));
+
+    // ✅ Fixed: was missing closing ) on this line
     allItems = snapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
-    });
+    }));
+
     isLoaded = true;
+
     const latest = getLatestItems(allItems);
     if (latest.length === 0) {
       message.textContent = "No items posted yet.";
@@ -112,13 +156,12 @@ async function loadItems() {
   } catch (error) {
     console.error("Listings load error:", error);
     loadFailed = true;
-    message.textContent = "Could not load items (check Firestore rules/network). Please refresh and try again.";
+    message.textContent = "Could not load items. Please refresh and try again.";
   } finally {
     searchBtn.disabled = false;
   }
 }
 
-// 🔍 Search function
 async function searchItems() {
   const searchValue = searchInput.value.trim();
 
@@ -138,7 +181,7 @@ async function searchItems() {
   }
 
   const tokens = tokenize(searchValue);
-  const results = getLatestItems(allItems.filter((item) => matchesQuery(item, tokens)), 20);
+  const results = getSearchResults(allItems, tokens);
 
   if (results.length === 0) {
     message.textContent = "No items found 😕";
@@ -150,6 +193,7 @@ async function searchItems() {
   renderItems(results);
 }
 
+// Initial load
 loadItems();
 
 // 🔘 Button click
