@@ -60,6 +60,7 @@ function getSearchText(item) {
     normalizeText(item.description),
     normalizeText(item.phone),
     normalizeText(item.type),
+    normalizeText(item.location),
   ].join(" ");
 }
 
@@ -113,15 +114,28 @@ function renderItems(items) {
     const description = document.createElement("p");
     description.textContent = String(data.description ?? "");
 
-    const contact = document.createElement("p");
-    contact.textContent = `Contact at: ${data.phone ?? "N/A"}`;
+    const cardInfo = document.createElement("div");
+    cardInfo.className = "card-info";
+
+    const contact = document.createElement("span");
+    contact.className = "info-item";
+    contact.innerHTML = `<span class="info-icon">&#128241;</span>${data.phone || "N/A"}`;
+
+    cardInfo.appendChild(contact);
+
+    if (data.location) {
+      const locationEl = document.createElement("span");
+      locationEl.className = "info-item";
+      locationEl.innerHTML = `<span class="info-icon">&#128205;</span>${data.location}`;
+      cardInfo.appendChild(locationEl);
+    }
 
     const badge = document.createElement("span");
     const normalizedType = data.type === "lost" || data.type === "found" ? data.type : "";
     badge.className = `badge${normalizedType ? ` ${normalizedType}` : ""}`;
     badge.textContent = normalizedType ? normalizedType.toUpperCase() : "";
 
-    card.append(image, title, description, contact, badge);
+    card.append(image, title, description, cardInfo, badge);
     fragment.appendChild(card);
   });
 
@@ -144,6 +158,7 @@ async function loadItems() {
     }));
 
     isLoaded = true;
+    console.log("[listings] items fetched:", allItems.length);
 
     const latest = getLatestItems(allItems);
     if (latest.length === 0) {
@@ -151,12 +166,20 @@ async function loadItems() {
       container.innerHTML = "";
     } else {
       message.textContent = `Showing latest ${latest.length} item(s)`;
-      renderItems(latest);
+      console.log("[listings] rendering", latest.length, "items");
+      try { renderItems(latest); } catch(renderErr) { console.error("[listings] renderItems crashed:", renderErr); }
     }
   } catch (error) {
     console.error("Listings load error:", error);
     loadFailed = true;
-    message.textContent = "Could not load items. Please refresh and try again.";
+    const errCode = error && error.code ? error.code : "";
+    if (errCode === "permission-denied") {
+      message.textContent = "Access denied - please log in first.";
+    } else if (errCode === "unavailable") {
+      message.textContent = "Network unavailable. Check your connection and refresh.";
+    } else {
+      message.textContent = "Could not load items (" + (errCode || (error && error.message) || "unknown") + "). Please refresh.";
+    }
   } finally {
     searchBtn.disabled = false;
   }
@@ -194,6 +217,7 @@ async function searchItems() {
 }
 
 // Initial load
+console.log("[listings] script started");
 loadItems();
 
 // 🔘 Button click

@@ -99,6 +99,7 @@ form.addEventListener("submit", async (e) => {
     const description = form["Description"].value.trim();
     const type        = form["type"].value;
     const phone       = form["phone-number"].value.trim();
+    const location    = form["location"].value.trim();
     const file        = imageInput.files[0];
 
     // Client-side validation
@@ -131,6 +132,7 @@ form.addEventListener("submit", async (e) => {
             type,
             image:        imageUrl,
             phone,
+            location,
             postedBy:     currentUser?.uid   ?? null,  // ownership tracking
             postedByEmail: currentUser?.email ?? null,
             createdAt:    serverTimestamp(),            // server time, not client clock

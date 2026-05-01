@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FindIt - Report Item</title>
     <link rel="icon" type="image/png" href="../assets/favicon.svg">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
-        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/post-item.css">
 </head>
 
@@ -19,32 +17,66 @@
                 <span class="brand-mark">F</span>
                 <span>FindIt</span>
             </a>
-            <h2 id="form-title">Report an item</h2>
-            <p class="form-subtitle">Add the details people need to identify and return it.</p>
-            <div>
-                <label for="item-name">Item name</label>
-                <input type="text" name="item-name" placeholder="Blue backpack" required>
+
+            <div class="form-header">
+                <h2 id="form-title">Report an Item</h2>
+                <p class="form-subtitle">Add the details people need to identify and return it.</p>
             </div>
-            <div>
-                <label for="Description">Description</label>
-                <textarea name="Description" id="Description" placeholder="Add color, location, time, or identifying details" required></textarea>
+
+            <div class="field">
+                <label for="item-name">
+                    <span class="label-icon">&#128230;</span> Item name
+                </label>
+                <input type="text" id="item-name" name="item-name" placeholder="e.g. Blue backpack" required>
             </div>
-            <div>
-                <label for="image">Upload image</label>
-                <input type="file" id="image" accept="image/*">
+
+            <div class="field">
+                <label for="Description">
+                    <span class="label-icon">&#128221;</span> Description
+                </label>
+                <textarea name="Description" id="Description" placeholder="Describe the color, size, pattern, or other identifying details..." required></textarea>
             </div>
-            <div>
-                <label for="phone-number">Mobile number</label>
-                <input type="tel" id="phone" name="phone-number" required>
+
+            <div class="field">
+                <label for="image">
+                    <span class="label-icon">&#128248;</span> Upload image
+                    <span class="optional-tag">optional</span>
+                </label>
+                <div class="upload-area">
+                    <input type="file" id="image" accept="image/*">
+                    <p class="upload-hint">JPEG, PNG, WEBP or GIF &middot; Max 5 MB</p>
+                </div>
             </div>
-            <div>
-                <label for="type">Report type</label>
-                <select name="type">
-                    <option value="lost">Lost</option>
-                    <option value="found">Found</option>
-                </select>
+
+            <div class="field-row">
+                <div class="field">
+                    <label for="phone">
+                        <span class="label-icon">&#128241;</span> Mobile number
+                    </label>
+                    <input type="tel" id="phone" name="phone-number" placeholder="+91 XXXXX XXXXX" required>
+                </div>
+                <div class="field">
+                    <label for="type">
+                        <span class="label-icon">&#127991;</span> Report type
+                    </label>
+                    <select name="type" id="type">
+                        <option value="lost">Lost</option>
+                        <option value="found">Found</option>
+                    </select>
+                </div>
             </div>
-            <button type="submit" class="rpt-btn">Report</button>
+
+            <div class="field">
+                <label for="location">
+                    <span class="label-icon">&#128205;</span> Location
+                </label>
+                <input type="text" id="location" name="location" placeholder="e.g. Library Block, Gate 2, Hostel A...">
+            </div>
+
+            <button type="submit" class="rpt-btn">
+                <span>Submit Report</span>
+                <span class="btn-arrow">&#8594;</span>
+            </button>
         </form>
     </div>
     <script type="module" src="../js/post-item.js"></script>
