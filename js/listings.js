@@ -119,7 +119,7 @@ function renderItems(items) {
 
     const contact = document.createElement("span");
     contact.className = "info-item";
-    contact.innerHTML = `<span class="info-icon">&#128241;</span><a href="tel:${data.phone}">${data.phone}</a>`;
+    contact.innerHTML = `<span class="info-icon">&#128241;</span><a id = "contact-num" href="tel:${data.phone}">${data.phone}</a>`;
 
     cardInfo.appendChild(contact);
 

@@ -263,3 +263,8 @@ body {
         font-size: 0.98rem;
     }
 }
+
+#contact-num{
+    text-decoration: none;
+    color: black;
+}
